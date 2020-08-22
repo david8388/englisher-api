@@ -10,13 +10,13 @@ import {
 @Entity()
 export class Word extends BaseEntity {
   @ObjectIdColumn()
-  id!: ObjectID;
+  _id: ObjectID;
 
   @Column()
   vocabulary: string;
 
   @Column()
-  expression: any;
+  expression: string;
 
   @Column()
   example: string;
