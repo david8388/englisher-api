@@ -10,7 +10,16 @@ export class WordService {
   constructor(
     @InjectRepository(Word)
     private wordRepository: WordRepository,
-  ) {}
+  ) { }
+
+  shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  async getRandomWords(): Promise<Word[]> {
+    const words = await this.wordRepository.find();
+    return this.shuffle(words).slice(0, 10);
+  }
 
   async getWords(filterDTO: GetWordsFilterDTO): Promise<Word[]> {
     return this.wordRepository.getWords(filterDTO);

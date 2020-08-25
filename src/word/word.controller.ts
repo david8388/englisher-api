@@ -14,11 +14,16 @@ import { CreateWordDTO } from './dto/create-word.dto';
 @Controller('word')
 export class WordController {
   private logger = new Logger('WordController');
-  constructor(private wordService: WordService) {}
+  constructor(private wordService: WordService) { }
 
   @Get()
   getWords(@Query() filterDTO: GetWordsFilterDTO): Promise<Word[]> {
     return this.wordService.getWords(filterDTO);
+  }
+
+  @Get('/random')
+  getRandomWords(): Promise<Word[]> {
+    return this.wordService.getRandomWords();
   }
 
   @Post()
