@@ -21,6 +21,11 @@ export class WordController {
     return this.wordService.getWords(filterDTO);
   }
 
+  @Get('/total')
+  getTotal(): Promise<number> {
+    return this.wordService.getTotal();
+  }
+
   @Get('/random')
   getRandomWords(): Promise<Word[]> {
     return this.wordService.getRandomWords();

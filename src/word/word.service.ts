@@ -12,6 +12,11 @@ export class WordService {
     private wordRepository: WordRepository,
   ) { }
 
+  async getTotal(): Promise<number> {
+    const [,total] = await this.wordRepository.findAndCount();
+    return total
+  }
+
   shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
   }
