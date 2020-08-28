@@ -26,6 +26,11 @@ export class WordController {
     return this.wordService.getTotal();
   }
 
+  @Get('/created')
+  getCreated(): Promise<number> {
+    return this.wordService.getCreated();
+  }
+
   @Get('/random')
   getRandomWords(): Promise<Word[]> {
     return this.wordService.getRandomWords();

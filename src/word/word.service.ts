@@ -13,8 +13,17 @@ export class WordService {
   ) { }
 
   async getTotal(): Promise<number> {
-    const [,total] = await this.wordRepository.findAndCount();
+    const [, total] = await this.wordRepository.findAndCount();
     return total
+  }
+
+  async getCreated(): Promise<number> {
+    const filter = {
+      startDate: new Date().toISOString(),
+      endDate: new Date(new Date().setDate(new Date().getDate() + 1)).toISOString()
+    }
+    const words = await this.wordRepository.getWords(filter);
+    return words.length
   }
 
   shuffle(array) {
