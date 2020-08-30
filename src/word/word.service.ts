@@ -30,9 +30,9 @@ export class WordService {
     return array.sort(() => Math.random() - 0.5);
   }
 
-  async getRandomWords(): Promise<Word[]> {
+  async getRandomWords(count: number = 10): Promise<Word[]> {
     const words = await this.wordRepository.find();
-    return this.shuffle(words).slice(0, 10);
+    return this.shuffle(words).slice(0, count);
   }
 
   async getWords(filterDTO: GetWordsFilterDTO): Promise<Word[]> {

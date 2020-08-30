@@ -32,8 +32,11 @@ export class WordController {
   }
 
   @Get('/random')
-  getRandomWords(): Promise<Word[]> {
-    return this.wordService.getRandomWords();
+  getRandomWords(
+    @Query('count') count: number
+  ): Promise<Word[]> {
+    console.log(count);
+    return this.wordService.getRandomWords(count);
   }
 
   @Post()
