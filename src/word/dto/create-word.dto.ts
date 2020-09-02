@@ -5,6 +5,6 @@ interface WordInfo {
 
 export class CreateWordDTO {
   vocabulary: string;
-  expression: Array<WordInfo>;
+  expression: string;
   example: string;
 }
